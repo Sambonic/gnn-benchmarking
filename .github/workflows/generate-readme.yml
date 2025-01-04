@@ -1,0 +1,16 @@
+name: Generate README
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    
+jobs:
+  generate-readme:
+    uses: Sambonic/readme-generator/.github/workflows/generate-readme.yml@main
+    with:
+      config: "config/config.json"
+      output: "README.md"
+    secrets:
+      token: ${{ secrets.README_GENERATOR_TOKEN }}
